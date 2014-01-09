@@ -5,5 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="map_discount">Map Discount</string>
+    <string name="select_menu_title">探し方は？</string>
+    <string name="now_where">現在地から探す</string>
+    <string name="serch_butto_string">検索する</string>
 
 </resources>

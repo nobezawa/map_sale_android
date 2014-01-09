@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:background="#000000">
     
     <TextView
+        android:id="@+id/title"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:textColor="#000000"
-        android:textSize="40sp"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
         android:gravity="center"
-        android:text="selectMenu" />
+        android:layout_marginTop="20sp"
+        android:text="@string/select_menu_title" />
+
+    <Button
+        android:id="@+id/now_where_button"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="20sp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/now_where" />
+
+    <Button
+        android:id="@+id/serch_button"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20sp"
+        android:layout_alignLeft="@+id/now_where_button"
+        android:layout_below="@id/now_where_button"
+        android:text="@string/serch_butto_string" />
 
 </RelativeLayout>
