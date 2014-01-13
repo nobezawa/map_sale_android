@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="10" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectMenuActivity"></activity>
+        <activity android:name=".NowWhereSearchActivity"></activity>
+        <activity android:name=".FormSearchActivity"></activity>
     </application>
 
 </manifest>
