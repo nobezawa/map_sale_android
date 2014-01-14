@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -40,6 +41,9 @@ public class GPSService extends Service implements LocationListener{
     public Location getLocation(){
         try{
             locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
+            Criteria locationCritera = new Criteria();
+            String providerName = locationManager.getBestProvider(locationCritera,
+                    true);
             gpsFlag = locationManager
                     .isProviderEnabled(LocationManager.GPS_PROVIDER);
             if(gpsFlag){
@@ -51,7 +55,7 @@ public class GPSService extends Service implements LocationListener{
                             MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
                     if (locationManager != null) {
                         location = locationManager
-                                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                .getLastKnownLocation(providerName);
                         if (location != null) {
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
@@ -108,10 +112,7 @@ public class GPSService extends Service implements LocationListener{
         });
         alertDialog.show();
     }
-    
-    
-    
-    
+
 
     @Override
     public void onLocationChanged(Location location) {
