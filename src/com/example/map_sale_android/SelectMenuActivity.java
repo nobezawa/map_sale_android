@@ -28,9 +28,11 @@ public class SelectMenuActivity extends Activity implements OnClickListener{
 		   case R.id.now_where_button:
 			   Intent intent = new Intent(this, NowWhereSearchActivity.class);
 			   startActivity(intent);
+			   break;
 		   case R.id.serch_button:
 			   Intent intent2 = new Intent(this, FormSearchActivity.class);
 			   startActivity(intent2);
+			   break;
 		}
 		
 	}
