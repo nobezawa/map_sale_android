@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.util.Log;
 
 public class GPSService extends Service implements LocationListener{
     
@@ -44,6 +45,7 @@ public class GPSService extends Service implements LocationListener{
             Criteria locationCritera = new Criteria();
             String providerName = locationManager.getBestProvider(locationCritera,
                     true);
+            Log.d("best", providerName);
             gpsFlag = locationManager
                     .isProviderEnabled(LocationManager.GPS_PROVIDER);
             if(gpsFlag){
@@ -51,8 +53,8 @@ public class GPSService extends Service implements LocationListener{
                 if (location == null) {
                     locationManager.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
-                            MIN_TIME_BW_UPDATES,
-                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+                            0,
+                            0, this);
                     if (locationManager != null) {
                         location = locationManager
                                 .getLastKnownLocation(providerName);

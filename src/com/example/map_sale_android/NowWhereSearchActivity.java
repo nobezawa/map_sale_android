@@ -1,10 +1,16 @@
 package com.example.map_sale_android;
 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+import org.json.JSONObject;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 public class NowWhereSearchActivity extends Activity{
     private TextView ido;
@@ -33,6 +39,13 @@ public class NowWhereSearchActivity extends Activity{
     public void onStart(){
     	ido.setText(Double.toString(latitude));
     	super.onStart();
+    }
+    
+    
+    public void pointPost(){
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        
     }
     
 
