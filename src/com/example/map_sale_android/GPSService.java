@@ -81,7 +81,7 @@ public class GPSService extends Service implements LocationListener{
     
     public double getLongitude(){
         if(location != null){
-            longitude = location.getLatitude();
+            longitude = location.getLongitude();
         }
         return longitude;
     }

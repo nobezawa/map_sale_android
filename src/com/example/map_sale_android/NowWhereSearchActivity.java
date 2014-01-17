@@ -13,7 +13,8 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class NowWhereSearchActivity extends Activity{
-    private TextView ido;
+    private TextView latitude_text;
+    private TextView longitude_text;
     
     GPSService gps;
     private double latitude;
@@ -23,7 +24,8 @@ public class NowWhereSearchActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_where_search);
-        ido = (TextView) findViewById(R.id.ido);
+        latitude_text = (TextView) findViewById(R.id.latitude_text);
+        longitude_text = (TextView) findViewById(R.id.longitude_text);
         gps = new GPSService(this);
         if(gps.canGetLocation){
             latitude = gps.getLatitude();
@@ -37,7 +39,8 @@ public class NowWhereSearchActivity extends Activity{
     
     @Override
     public void onStart(){
-    	ido.setText(Double.toString(latitude));
+    	latitude_text.setText(Double.toString(latitude));
+    	longitude_text.setText(Double.toString(longitude));
     	super.onStart();
     }
     
