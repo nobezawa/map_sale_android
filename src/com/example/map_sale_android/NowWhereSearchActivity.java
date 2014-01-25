@@ -1,6 +1,7 @@
 package com.example.map_sale_android;
 
 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,8 @@ import com.loopj.android.http.RequestParams;
 public class NowWhereSearchActivity extends Activity{
     private TextView latitude_text;
     private TextView longitude_text;
+    
+    public static final String WHERE_URL = "http://map-sale.nobezawa.info/api/where";
     
     GPSService gps;
     private double latitude;
