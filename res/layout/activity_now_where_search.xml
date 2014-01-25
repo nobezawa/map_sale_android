@@ -21,19 +21,37 @@
         android:layout_below="@id/title">
 
     
-    <TextView 
-        android:id="@+id/latitude_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="latitude"/>
+        <TextView 
+            android:id="@+id/latitude_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="latitude"/>
     
-    <TextView 
-        android:id="@+id/longitude_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/latitude_text"
-        android:text="longitude"/>
+        <TextView 
+            android:id="@+id/longitude_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/latitude_text"
+            android:text="longitude"/>
     
-    
+
     </RelativeLayout>
+    
+    
+    <RelativeLayout 
+        android:id="@+id/now_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/here_point">
+        
+        <Button
+            android:id="@+id/post_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="情報取得" />    
+        
+    </RelativeLayout>
+
+    
+    
 </RelativeLayout>
