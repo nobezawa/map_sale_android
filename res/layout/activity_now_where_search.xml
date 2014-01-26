@@ -42,13 +42,33 @@
         android:id="@+id/now_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/here_point">
         
         <Button
             android:id="@+id/post_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="情報取得" />    
+            android:text="情報取得" />
+        
+        
+        <TextView 
+            android:id="@+id/shop_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/post_btn"
+            android:text="店舗名"/>
+        
+        <TextView 
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shop_text"
+            android:text=""/>
+        
+        
         
     </RelativeLayout>
 

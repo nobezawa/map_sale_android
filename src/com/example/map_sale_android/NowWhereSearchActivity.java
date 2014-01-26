@@ -10,6 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -22,8 +24,10 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
     
     private TextView latitude_text;
     private TextView longitude_text;
+    private TextView name_text;
     
-    public static final String WHERE_URL = "http://map-sale.nobezawa.info/api/where";
+    public JSONObject result;
+        
     
     GPSService gps;
     private double latitude;
@@ -35,6 +39,7 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
         setContentView(R.layout.activity_now_where_search);
         latitude_text = (TextView) findViewById(R.id.latitude_text);
         longitude_text = (TextView) findViewById(R.id.longitude_text);
+        name_text = (TextView) findViewById(R.id.name_text);
         Button post_btn = (Button) findViewById(R.id.post_btn);
         post_btn.setOnClickListener(this);
         gps = new GPSService(this);
@@ -70,7 +75,13 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
                 Log.d("sucess", "通信成功");
                 try{
                     JSONObject responseJSON = new JSONObject(response);
-                    Log.d("response", responseJSON.toString());
+                    JSONArray resultArray = responseJSON.getJSONArray("result");
+                    for (int i = 0; i < resultArray.length(); i++) {
+                        result = resultArray.getJSONObject(i);
+                        Log.d("JSONSampleActivity", result.getString("name"));
+                    }
+                    name_text.setText(result.getString("name"));
+                    
                 }catch(Exception e) {
                     Log.d("失敗しました", "aaaa");
                     Log.d("Error", e.getMessage());   
@@ -79,9 +90,9 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
             
             @Override
             public void onFailure(Throwable e, String response){
-                Log.d("失敗", response);
+                Log.d("失敗", response); 
             }
-            
+ 
         });
     }
 
