@@ -3,6 +3,8 @@ package com.example.map_sale_android;
 
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,13 +27,15 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
     private TextView latitude_text;
     private TextView longitude_text;
     private TextView name_text;
+    private TextView address_text;
     
     public JSONObject result;
-        
-    
+
     GPSService gps;
     private double latitude;
     private double longitude;
+    
+    private Button map_btn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,12 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
         latitude_text = (TextView) findViewById(R.id.latitude_text);
         longitude_text = (TextView) findViewById(R.id.longitude_text);
         name_text = (TextView) findViewById(R.id.name_text);
+        address_text = (TextView) findViewById(R.id.address_text);
         Button post_btn = (Button) findViewById(R.id.post_btn);
+        map_btn = (Button) findViewById(R.id.map_button);
+        map_btn.setVisibility(View.INVISIBLE);
         post_btn.setOnClickListener(this);
+        map_btn.setOnClickListener(this);
         gps = new GPSService(this);
         if(gps.canGetLocation){
             latitude = gps.getLatitude();
@@ -81,7 +89,8 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
                         Log.d("JSONSampleActivity", result.getString("name"));
                     }
                     name_text.setText(result.getString("name"));
-                    
+                    address_text.setText(result.getString("address"));                  
+                    map_btn.setVisibility(View.VISIBLE);                  
                 }catch(Exception e) {
                     Log.d("失敗しました", "aaaa");
                     Log.d("Error", e.getMessage());   
@@ -101,6 +110,15 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
         int id = v.getId();
         if (id == R.id.post_btn){
             pointPost();
+        }else if(id == R.id.map_button){
+            try{
+                String uri = "geo:0,0?q=" + result.getString("address");
+                Intent map_intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(map_intent);
+            }catch (Exception e){
+                
+            }
+            
         }
         
     }
