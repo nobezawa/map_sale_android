@@ -81,12 +81,40 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/address"
             android:text=""/>
+        
+        <TextView 
+            android:id="@+id/event_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/address_text"
+            android:text="イベント名"/>
+        
+        <TextView 
+            android:id="@+id/event_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/event_title"
+            android:text=""/>
+        
+        <TextView 
+            android:id="@+id/summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/event_title_text"
+            android:text="概要"/>
+        
+        <TextView 
+            android:id="@+id/summary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/summary"
+            android:text=""/>
 
         <Button
             android:id="@+id/map_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/address_text"
+            android:layout_below="@id/summary_text"
             android:text="Map 表示" />
         
     </RelativeLayout>

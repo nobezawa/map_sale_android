@@ -28,8 +28,12 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
     private TextView longitude_text;
     private TextView name_text;
     private TextView address_text;
+    private TextView event_title_text;
+    private TextView summary_text;
+    
     
     public JSONObject result;
+    
 
     GPSService gps;
     private double latitude;
@@ -45,6 +49,9 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
         longitude_text = (TextView) findViewById(R.id.longitude_text);
         name_text = (TextView) findViewById(R.id.name_text);
         address_text = (TextView) findViewById(R.id.address_text);
+        event_title_text = (TextView) findViewById(R.id.event_title_text);
+        summary_text = (TextView) findViewById(R.id.summary_text);
+        
         Button post_btn = (Button) findViewById(R.id.post_btn);
         map_btn = (Button) findViewById(R.id.map_button);
         map_btn.setVisibility(View.INVISIBLE);
@@ -83,13 +90,16 @@ public class NowWhereSearchActivity extends Activity implements OnClickListener{
                 Log.d("sucess", "通信成功");
                 try{
                     JSONObject responseJSON = new JSONObject(response);
-                    JSONArray resultArray = responseJSON.getJSONArray("result");
-                    for (int i = 0; i < resultArray.length(); i++) {
-                        result = resultArray.getJSONObject(i);
-                        Log.d("JSONSampleActivity", result.getString("name"));
-                    }
+                    //JSONArray resultArray = responseJSON.getJSONArray("result");
+                    result = responseJSON.getJSONObject("result");
+                    //for (int i = 0; i < resultArray.length(); i++) {
+                    //    result = resultArray.getJSONObject(i);
+                    //    Log.d("JSONSampleActivity", result.getString("name"));
+                    //}
                     name_text.setText(result.getString("name"));
-                    address_text.setText(result.getString("address"));                  
+                    address_text.setText(result.getString("address"));
+                    event_title_text.setText(result.getString("title"));
+                    summary_text.setText(result.getString("summary"));
                     map_btn.setVisibility(View.VISIBLE);                  
                 }catch(Exception e) {
                     Log.d("失敗しました", "aaaa");
